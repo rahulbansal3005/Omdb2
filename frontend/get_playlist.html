@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search PlayList on UserName</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search_movies.html">Search Movies</a></li>
+            <li><a href="create_playlist.html">Create Playlist</a></li>
+            <li><a href="get_playlist.html">Get Playlist</a></li>
+
+        </ul>
+    </nav>
+
+    <h1>Search Playlist</h1>
+    <input type="text" id="userName" placeholder="Enter Your UserName">
+    <button onclick="getPlayListOnUserName()">Search</button>
+    <div id="movieResults"></div>
+</body>
+<script src="script.js"></script>
+</html>
