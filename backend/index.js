@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
-
+const url = `mongodb+srv://rahul:kFkvgDaGJEgnro1G@cluster0.cmblmmx.mongodb.net/?retryWrites=true&w=majority`;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://localhost:27017/movie_playlist", {
+  .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -128,7 +128,7 @@ app.post("/api/createPlaylist", async (req, res) => {
 app.get("/api/playlists", async (req, res) => {
   try {
     const userName = req.query.userName;
-    const client = await MongoClient.connect(`mongodb://localhost:27017`);
+    const client = await MongoClient.connect(url);
     const db = client.db("movie_playlist");
     const playlistsCollection = db.collection("playlists");
     const playlists = await playlistsCollection
