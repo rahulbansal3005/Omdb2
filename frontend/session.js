@@ -1,8 +1,10 @@
 function goToSignup() {
-  window.location.href = "signup.html"; // Replace with your signup page URL
+  window.location.href = "signup.html";
 }
 
-// Function to handle login
+function goToLogin() {
+  window.location.href = "login.html";
+}
 async function handleLogin() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -16,17 +18,17 @@ async function handleLogin() {
   };
 
   try {
-    const response = await fetch("/api/login", requestOptions);
+    const response = await fetch(
+      "http://127.0.0.1:3000/api/login",
+      requestOptions
+    );
     const data = await response.json();
 
-    // Save the JWT token to local storage or a cookie
     localStorage.setItem("token", data.token);
 
-    // Redirect to home.html after login
-    window.location.href = "home.html";
+    window.location.href = "/frontend/index.html";
   } catch (error) {
     console.error("Error:", error);
-    // Display error message to the user
   }
 }
 
@@ -43,18 +45,16 @@ async function handleSignup() {
   };
 
   try {
-    const response = await fetch("/api/signup", requestOptions);
+    const response = await fetch(
+      "http://127.0.0.1:3000/api/signup",
+      requestOptions
+    );
+    console.log(response);
     const data = await response.json();
-    console.log(data); // Display response message (optional)
+    console.log(data);
 
-    // Redirect to login page after successful signup (you can redirect to any other page)
-    window.location.href = "/login.html"; // Replace 'login.html' with your login page URL
+    window.location.href = "/frontend/login.html";
   } catch (error) {
     console.error("Error:", error);
-    // Display error message to the user
   }
 }
-
-// Add event listener to the signup button
-document.getElementById("signupBtn").addEventListener("click", handleSignup);
-document.getElementById("loginBtn").addEventListener("click", handleLogin);

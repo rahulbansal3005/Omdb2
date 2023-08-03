@@ -11,7 +11,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// MongoDB setup
 mongoose
   .connect("mongodb://localhost:27017/movie_playlist", {
     useNewUrlParser: true,
@@ -29,7 +28,6 @@ db.once("open", () => {
   console.log("Connected to MongoDB database.");
 });
 
-// Playlist schema and model
 const playlistSchema = new mongoose.Schema({
   userName: {
     type: String,
@@ -68,7 +66,6 @@ const userSchema = new mongoose.Schema({
 const Playlist = new mongoose.model("Playlist", playlistSchema);
 const User = mongoose.model("User", userSchema);
 
-// Signup route
 app.post("/api/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -84,7 +81,6 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// Login route
 app.post("/api/login", async (req, res) => {
   try {
     const { username, password } = req.body;

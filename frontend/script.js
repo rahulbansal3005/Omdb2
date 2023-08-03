@@ -7,9 +7,6 @@ async function fetchPlaylistDataFromAPI(searchQuery) {
 
 async function searchMovies() {
   const searchQuery = document.getElementById("searchInput").value;
-  // const response = await fetch(
-  // `https://www.omdbapi.com/?s=${searchQuery}&apikey=2e5a9437`
-  // );
   const data = await fetchPlaylistDataFromAPI(searchQuery);
   console.log(data, "data");
   const movieResults = document.getElementById("movieResults");
@@ -65,7 +62,7 @@ async function createPlaylist() {
 async function getPlayListOnUserName() {
   const userName = document.getElementById("userName").value;
   const requestOptions = {
-    method: "GET", // Change the method to "GET"
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },

@@ -24,7 +24,7 @@ label {
 }
 
 input {
-  width: 100%;
+  width: -webkit-fill-available;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -38,7 +38,8 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 29em;
+  margin: 5px;
 }
 
 button:hover {
