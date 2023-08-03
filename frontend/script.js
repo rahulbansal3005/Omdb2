@@ -1,3 +1,5 @@
+const apiURL = process.env.NODE_APP_API_URL || "https://omdb-pahi.onrender.com";
+
 async function fetchPlaylistDataFromAPI(searchQuery) {
   const apiUrl = `https://www.omdbapi.com/?s=${searchQuery}&apikey=2e5a9437`;
   const response = await fetch(apiUrl);
@@ -45,7 +47,7 @@ async function createPlaylist() {
     }),
   };
 
-  fetch("http://127.0.0.1:3000/api/createPlaylist", requestOptions)
+  fetch(`${apiURL}/api/createPlaylist`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -68,10 +70,7 @@ async function getPlayListOnUserName() {
     },
   };
 
-  fetch(
-    `http://127.0.0.1:3000/api/playlists?userName=${userName}`,
-    requestOptions
-  )
+  fetch(`${apiURL}/api/playlists?userName=${userName}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       showPlaylists(data);
